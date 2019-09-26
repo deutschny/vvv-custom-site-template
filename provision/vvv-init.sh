@@ -109,4 +109,9 @@ if [ ! -z "${WP_LOCALE}" ]; then
     noroot wp site switch-language "${WP_LOCALE}" 2>/dev/null 
 fi
 
+# Link wordpress-theme folder to Wordpress instance.
+rm -rf ${VVV_PATH_TO_SITE}/public_html/wp-content/themes/custom-wordpress-theme;
+ln -s /vagrant/wordpress-theme ${VVV_PATH_TO_SITE}/public_html/wp-content/themes/custom-wordpress-theme;
+noroot wp theme activate custom-wordpress-theme;
+
 echo "Site Template provisioner script completed"
